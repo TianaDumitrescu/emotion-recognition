@@ -13,7 +13,7 @@
     <RootNamespace>audio-to-spectrogram</RootNamespace>
     <InterpreterId>Global|PythonCore|3.10</InterpreterId>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>Actor_01\ --spectrogram --mkchunks</CommandLineArguments>
+    <CommandLineArguments>Actor_01\ --spectrogram</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">

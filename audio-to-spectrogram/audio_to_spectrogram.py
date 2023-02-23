@@ -38,7 +38,7 @@ def graph_spectrogram(wav_file):
     print (type(data),len(data))
     nfft = 256  # Length of the windowing segments
     fs = 256    # Sampling frequency
-    pxx, freqs, bins, im = plt.specgram(data, nfft,fs)
+    pxx, freqs, bins, im = plt.specgram(data, nfft, fs)    
     print ("pxx : ",len(pxx))
     print ("freqs : ",len(freqs))
     print ("bins : ",len(bins))
@@ -67,11 +67,11 @@ def wav2spectrogram(path):
     return 10
   for f in waves:
     try:
+      print("File name is: " + f)
       print ("Generating spectrograms..")
       graph_spectrogram(f)
     except Exception as e:
       print ("Something went wrong while generating spectrogram: ",e)
-  
 
 if __name__=='__main__':
   parser = argparse.ArgumentParser()
