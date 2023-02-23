@@ -45,10 +45,11 @@ def graph_spectrogram(wav_file):
     #plt.axis('on')
     #plt.show()
     plt.axis('off')
-    plt.savefig(wav_file.split('.')[0]+'.png',
+    fileName = wav_file.split('.')[0]+'.png'
+    plt.savefig(fileName,
                 dpi=100, # Dots per inch
-                frameon='false',
-                aspect='normal',
+                #frameon='false',
+                #aspect='normal',
                 bbox_inches='tight',
                 pad_inches=0) # Spectrogram saved as a .png
     im=Image.open(wav_file.split('.')[0]+'.png')
