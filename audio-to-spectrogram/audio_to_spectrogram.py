@@ -63,7 +63,7 @@ def get_wav_info(wav_file):
     return rate, data
       
 def wav2spectrogram(path):
-  waves=glob.glob(path+'*.wav')
+  waves=glob.glob(path+'**/*.wav')
   if len(waves)==0:
     return 10
   for f in waves:

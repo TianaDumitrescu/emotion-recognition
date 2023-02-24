@@ -13,8 +13,8 @@
     <RootNamespace>audio-to-spectrogram</RootNamespace>
     <InterpreterId>Global|PythonCore|3.10</InterpreterId>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>Actor_01\ --spectrogram</CommandLineArguments>
-    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+    <CommandLineArguments>toronto-data-set\ --spectrogram</CommandLineArguments>
+    <EnableNativeCodeDebugging>True</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -26,6 +26,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="audio_to_spectrogram.py" />
+    <Compile Include="machine-learning.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
