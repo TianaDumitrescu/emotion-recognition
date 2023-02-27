@@ -18,7 +18,7 @@ def mp3towav(path):
     subprocess.call(['sox', mp, '-e', 'mu-law','-r', '16k', wa, 'remix', '1,2'])
 
 def makechunks(path):
-  waves=glob.glob(path+'*.wav')
+  waves=glob.glob(path+'**/*.wav')
   if len(waves)==0:
     return 10
   for i in waves:
@@ -45,18 +45,21 @@ def graph_spectrogram(wav_file):
     #plt.axis('on')
     #plt.show()
     plt.axis('off')
-    fileName = wav_file.split('.')[0]+'.png'
-    plt.savefig(fileName,
+    pngfileName = wav_file.split('.')[0].replace("converted-to-default-wav", "converted-to-spectrogram") + '.png'
+    jpgfileName = wav_file.split('.')[0].replace("converted-to-default-wav", "converted-to-spectrogram") + '.jpg'
+    print("png file: " + pngfileName)
+    
+    plt.savefig(pngfileName,
                 dpi=100, # Dots per inch
                 #frameon='false',
                 #aspect='normal',
                 bbox_inches='tight',
                 pad_inches=0) # Spectrogram saved as a .png
-    im=Image.open(wav_file.split('.')[0]+'.png')
+    im=Image.open(pngfileName)
     rgb_im=im.convert('RGB')
-    rgb_im.save(wav_file.split('.')[0]+'.jpg')
-    if os.path.exists(wav_file.split('.')[0]+'.png'):
-      os.remove(wav_file.split('.')[0]+'.png')
+    rgb_im.save(jpgfileName)
+    if os.path.exists(pngfileName):
+      os.remove(pngfileName)
 
 def get_wav_info(wav_file):
     rate, data = wavfile.read(wav_file)
