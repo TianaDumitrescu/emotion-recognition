@@ -130,4 +130,5 @@ dmypy.json
 .vs
 *.jpg
 *.png
-/audio-to-spectrogram/data-sets/ravdess
+
+/audio-to-spectrogram/data-sets/
