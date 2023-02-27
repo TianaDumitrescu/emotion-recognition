@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>a4055f29-23ce-4299-91be-3d7eae6d6276</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>audio_to_spectrogram.py</StartupFile>
+    <StartupFile>machine-learning.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -27,6 +27,9 @@
   <ItemGroup>
     <Compile Include="audio_to_spectrogram.py" />
     <Compile Include="machine-learning.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="wav-to-default.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
