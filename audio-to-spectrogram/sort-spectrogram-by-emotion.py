@@ -38,11 +38,10 @@ for file in files:
     
     input_file = input_file.replace("/", "\\");
     output_file = file.replace(current_folder, emotion).replace('converted-to-spectrogram', 'final-data-set/training').replace("/", "\\");
-    copy_command = "xcopy /i /y """ + input_file + """ """ + output_file + "" ""
+    copy_command = "copy /y """ + input_file + """ """ + output_file + "" ""
     os.popen(copy_command)
     
     print("Original file: " + input_file)
     print("New file:      " + output_file)
     print(copy_command)
     print()
-    exit()
