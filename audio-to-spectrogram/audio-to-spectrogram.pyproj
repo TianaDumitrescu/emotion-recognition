@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>a4055f29-23ce-4299-91be-3d7eae6d6276</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>sort-spectrogram-by-emotion.py</StartupFile>
+    <StartupFile>wav-to-image.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -14,7 +14,7 @@
     <InterpreterId>Global|PythonCore|3.10</InterpreterId>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <CommandLineArguments>data-sets\converted-to-default-wav\ --spectrogram</CommandLineArguments>
-    <EnableNativeCodeDebugging>True</EnableNativeCodeDebugging>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -27,7 +27,7 @@
   <ItemGroup>
     <Compile Include="audio_to_spectrogram.py" />
     <Compile Include="create-data-set-folders.py" />
-    <Compile Include="machine-learning.py">
+    <Compile Include="wav-to-image.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="sort-spectrogram-by-emotion.py" />
@@ -48,6 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.10" />
+    <InterpreterReference Include="Global|PythonCore|3.11" />
+    <InterpreterReference Include="Global|PythonCore|3.7" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="read.me" />
