@@ -4,6 +4,7 @@ import os
 import glob
 import subprocess
 import argparse
+from typing import Any
 from pydub import AudioSegment
 from pydub.utils import make_chunks
 from scipy.io import wavfile
@@ -14,18 +15,20 @@ import librosa.display
 
 #Plots the images
 def waveplot(data, sampling_rate, emotion):
-    plt.figure(figsize=(10, 4))
-    plt.title(emotion, size=20)
+    #plt.figure(figsize=(10, 4))
+    #plt.title(emotion, size=20)
     librosa.display.waveshow(data, sr=sampling_rate)
-    plt.show()
+    #plt.show()
+    plt.savefig('1.jpg', bbox_inches='tight', pad_inches=0, dpi=100)
 
 def spectogram(data, sampling_rate, emotion):
     x = librosa.stft(data)
     xdb = librosa.amplitude_to_db(abs(x))
-    plt.figure(figsize=(10, 4))
-    plt.title(emotion, size=20)
-    librosa.display.specshow(xdb, sampling_rate=sampling_rate, x_axis='time', y_axis='hz')
+    #plt.figure(figsize=(10, 4))
+    #plt.title(emotion, size=20)
+    librosa.display.specshow(xdb, sr=sampling_rate, x_axis='time', y_axis='hz')
     plt.colorbar()
+    plt.savefig('2.jpg', bbox_inches='tight', pad_inches=0, dpi=100)
 
 
 #Finds path  
@@ -64,26 +67,35 @@ for file in files:
         emotion = "surprised"
 
     input_file = file.replace("/", "\\");
-    spectrogram_output_file = file.replace(current_folder, emotion).replace('ravdess', 'converted-to-spectrogram-v2').replace("/", "\\");
-    waveplot_output_file = file.replace(current_folder, emotion).replace('ravdess', 'converted-to-waveplot').replace("/", "\\");
+    spectrogram_output_file = file.replace(current_folder, emotion).replace('converted-to-default-wav', 'converted-to-spectrogram-v2').replace("/", "\\").replace('.wav', '.jpg');
+    waveplot_output_file = file.replace(current_folder, emotion).replace('converted-to-default-wav', 'converted-to-waveplot').replace("/", "\\").replace('.wav', '.jpg');
     print(spectrogram_output_file)
     print(waveplot_output_file)
 
-    #splitPath = waveplot_output_file.split("\\")
-    #emotion = splitPath[2];
-    print(librosa.__version__)
+    # Gets folder name
+    f = file.split("\\")
+    new_path = "data-sets/converted-to-spectrogram-v2/" + emotion
 
-    data, sr = librosa.load("a.wav", sr=None)
-    waveplot(data, sr, emotion)
+    # Creates folder if does not exist
+    if not os.path.isdir(new_path):
+        os.makedirs(new_path)
 
-    # find emotion category
-    #sort into emotion category
-    # find emotion category, use as parameter for imagex
+    f = file.split("\\")
+    new_path = "data-sets/converted-to-waveplot/" + emotion
+
+    # Creates folder if does not exist
+    if not os.path.isdir(new_path):
+        os.makedirs(new_path)
 
 
-    
-    
-    #input_file = input_file.replace("/", "\\");
-    #training_output_file = file.replace(current_folder, emotion).replace('converted-to-spectrogram', 'final-data-set/training').replace("/", "\\");
-    #print (training_output_file)
-    exit()
+    data, sr = librosa.load(input_file, sr=None)
+    librosa.display.waveshow(data, sr=sr)
+    plt.savefig(waveplot_output_file, bbox_inches='tight', pad_inches=0, dpi=100)
+
+    x = librosa.stft(data)
+    xdb = librosa.amplitude_to_db(abs(x))
+    #plt.figure(figsize=(10, 4))
+    #plt.title(emotion, size=20)
+    librosa.display.specshow(xdb, sr=sr, x_axis='time', y_axis='hz')
+    plt.colorbar()
+    plt.savefig(spectrogram_output_file, bbox_inches='tight', pad_inches=0, dpi=100)
