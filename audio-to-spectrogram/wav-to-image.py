@@ -87,15 +87,17 @@ for file in files:
     if not os.path.isdir(new_path):
         os.makedirs(new_path)
 
-
     data, sr = librosa.load(input_file, sr=None)
-    librosa.display.waveshow(data, sr=sr)
+    librosa.display.waveshow(data, sr=sr)   
     plt.savefig(waveplot_output_file, bbox_inches='tight', pad_inches=0, dpi=100)
-
+    
     x = librosa.stft(data)
     xdb = librosa.amplitude_to_db(abs(x))
     #plt.figure(figsize=(10, 4))
     #plt.title(emotion, size=20)
+    #plt.cla()
     librosa.display.specshow(xdb, sr=sr, x_axis='time', y_axis='hz')
     plt.colorbar()
     plt.savefig(spectrogram_output_file, bbox_inches='tight', pad_inches=0, dpi=100)
+    plt.clf();
+    #exit()
