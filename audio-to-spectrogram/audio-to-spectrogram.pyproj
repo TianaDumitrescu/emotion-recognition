@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>a4055f29-23ce-4299-91be-3d7eae6d6276</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>wav-to-image.py</StartupFile>
+    <StartupFile>audio_to_spectogram_2.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -27,7 +27,7 @@
   <ItemGroup>
     <Compile Include="audio_to_spectrogram.py" />
     <Compile Include="create-data-set-folders.py" />
-    <Compile Include="wav-to-image.py">
+    <Compile Include="audio_to_spectogram_2.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="sort-spectrogram-by-emotion.py" />
